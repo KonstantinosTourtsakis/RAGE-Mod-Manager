@@ -12,10 +12,10 @@ Python3 is required to use this tool. Download and install the latest version of
 
 ## Installation
 - Make sure [Python3](https://www.python.org/downloads/) is installed
-- Extract the `RAGE Mod Manager` folder in the same drive where your games are located (the tool won't work if its in a separate drive)
-- Open `RAGEModManager.py` file using a text editor (ex: Notepad). Add the path to your game folders as well as the path to the provided mods folder ( GTA IV Mods, GTA V Mods, RDR2 Mods)
+- Extract the `Mods` folder(s) in the same drive where your game(s) are located (the tool won't work if the mods folder(s) is/are on a separate drive)
+- Open `RAGEModManager.py` file using a text editor (ex: Notepad). Add the path to your game root folders as well as the path to the provided mods folder(s) ( GTA IV Mods, GTA V Mods, RDR2 Mods)
 - Delete the empty.gitkeep files found in the Mods folders
-- Double click RAGEModManager.py to use the tool :)
+- Open `RAGEModManager.py` with Python to use the tool :)
 
 ## Permission
 Please, don't redistribute the source code unless this repository is gone. If you want to share the source with other people link them to this page.

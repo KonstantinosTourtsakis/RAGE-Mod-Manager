@@ -1,20 +1,35 @@
 import os
-
+import shutil
+from pathlib import Path
 
 #PATHS
 
+#The following paths refer to the Mods folders paths
+v = r"\GTA V Mods"
+modsV = rf"{Path().absolute()}{v}"
+rdr2 = r"\RDR2 Mods"
+modsRDR2 = rf"{Path().absolute()}{rdr2}"
+iv = r"\GTA IV Mods"
+modsIV = rf"{Path().absolute()}{iv}"
+
 #The following paths refer to the game directory:
-pathV = 'K:\Rockstar Games\Grand Theft Auto V'
-pathRDR2 = 'K:\Rockstar Games\Red Dead Redemption 2'
-pathIV = 'K:\Rockstar Games\Grand Theft Auto IV'
+filepath = modsV + r"\gtavpath.txt"
+f = open(filepath, "r")
+p = f.read()
+f.close()
+pathV = rf"{p}"
 
-#The following paths refer to the folders
-#where all mods will be transfered/saved
-modsV = 'K:\RAGE Mod Manager\GTA V Mods'
-modsRDR2 = 'K:\RAGE Mod Manager\RDR2 Mods'
-modsIV = 'K:\RAGE Mod Manager\GTA IV Mods'
+filepath = modsRDR2 + r"\rdr2path.txt"
+f = open(filepath, "r")
+p = f.read()
+f.close()
+pathRDR2 = rf"{p}"
 
-
+filepath = modsIV + r"\gtaivpath.txt"
+f = open(filepath, "r")
+p = f.read()
+f.close()
+pathIV = rf"{p}"
 
 
 # Lists that include the game files' names based on the Rockstar Games Launcher (RGL) version
@@ -48,7 +63,9 @@ RDR2rgl = ["12on7",
    "textures_0.rpf",
    "textures_1.rpf",
    "update.rpf",
-   "x64"]
+   "x64",
+
+   "rdr2path.txt"]
 
 
 GTAVrgl = ["bink2w64.dll",
@@ -92,7 +109,9 @@ GTAVrgl = ["bink2w64.dll",
 "x64t.rpf",
 "x64u.rpf",
 "x64v.rpf",
-"x64w.rpf"]
+"x64w.rpf",
+
+"gtavpath.txt"]
 
 #GTA IV list is based on the Complete Edition of the game (also on RGL)
 GTAIVrgl = ["binkw32.dll",
@@ -107,7 +126,9 @@ GTAIVrgl = ["binkw32.dll",
 "pc",
 "Redistributables",
 "TBoGT",
-"TLAD"]
+"TLAD",
+
+"gtaivpath.txt"]
 
 
 def TransferMods(directory, dest, list, install):
@@ -122,10 +143,15 @@ def TransferMods(directory, dest, list, install):
         filename = os.fsdecode(file)
         if filename not in list:
             d1 = os.fsdecode(directory)
-            print(text + filename)
-            name = '\\' + filename
-            os.rename(r'%s' %d1 +  name, r'%s' %dest + name)
-            sum = sum + 1
+            if os.path.exists(directory) and os.path.exists(dest):
+                print(text + filename)
+                name = '\\' + filename
+                shutil.move(r'%s' %d1 +  name, r'%s' %dest)
+                sum = sum + 1
+            else:
+                e = input("Incorrect or unexisting paths. Please check your paths.")
+                exit()
+
     if install:
         print(" ")
         print("Finished transfering files. " + str(sum) + " file(s) were installed")
@@ -143,7 +169,7 @@ print(" ")
 print("1) GTA V")
 print("2) Red Dead Redemption 2")
 print("3) GTA IV")
-print("4) Exit")
+print("4) Setup paths")
 print(" ")
 choice = int(input("Select a game or Exit: "))
 os.system("cls")

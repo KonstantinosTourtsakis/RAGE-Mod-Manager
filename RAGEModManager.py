@@ -64,6 +64,14 @@ RDR2rgl = ["12on7",
    "textures_1.rpf",
    "update.rpf",
    "x64",
+   "commandline.txt",
+   
+   "installscript.vdf", #Steam files
+   "PlayRDR2.exe",
+   "steam_api64.dll",
+
+   ".egstore", #Epic Games files
+   "EOSSDK-Win64-Shipping.dll",
 
    "rdr2path.txt"]
 
@@ -110,6 +118,17 @@ GTAVrgl = ["bink2w64.dll",
 "x64u.rpf",
 "x64v.rpf",
 "x64w.rpf",
+"commandline.txt",
+
+"installscript.vdf", #Steam files
+"steam_api64.dll",
+"_CommonRedist",
+"Installers",
+
+".egstore", #Epic Games files
+"ReadMe",
+"EOSSDK-Win64-Shipping.dll",
+
 
 "gtavpath.txt"]
 
@@ -169,7 +188,7 @@ print(" ")
 print("1) GTA V")
 print("2) Red Dead Redemption 2")
 print("3) GTA IV")
-print("4) Setup paths")
+print("4) Exit")
 print(" ")
 choice = int(input("Select a game or Exit: "))
 os.system("cls")

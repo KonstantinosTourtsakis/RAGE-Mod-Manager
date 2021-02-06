@@ -4,8 +4,11 @@ A simple mod manager written in Python
 ## Description
 RAGE Mod Manager is a simple mod manager written in Python. This tool can be used to automatically install/uninstall mods to GTA V, Red Dead Redemption 2 and GTA IV.
 
-# Important note
-The tool only works properly for the Rockstar Games Launcher version of these games. The reason is because it is using a list where are all game  file names are stored. As you may know, Steam and Epic Games versions of the games include some extra files in their root directory. I will update this repository soon and bring full support for all versions soon.
+# Supported platforms:
+- GTA V (RGL, Steam, Epic Games)
+- Red Dead Redemption 2 (RGL, Steam, Epic Games)
+- GTA IV (RGL)
+
 
 ## Requirements
 Python3 is required to use this tool. Download and install the latest version of Python3 [here](https://www.python.org/downloads/). If you can't find the download link, choose a version of Python3 (latest is suggested), scroll all the way down and download `Windows installer (64-bit)`. Then use it to install Python.

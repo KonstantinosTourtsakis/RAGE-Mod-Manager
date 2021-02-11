@@ -65,7 +65,7 @@ RDR2rgl = ["12on7",
    "update.rpf",
    "x64",
    "commandline.txt",
-   
+
    "installscript.vdf", #Steam files
    "PlayRDR2.exe",
    "steam_api64.dll",
@@ -146,6 +146,10 @@ GTAIVrgl = ["binkw32.dll",
 "Redistributables",
 "TBoGT",
 "TLAD",
+
+"steam_api.dll", #Steam files
+"installscript.vdf",
+"PlayGTAIV.exe",
 
 "gtaivpath.txt"]
 

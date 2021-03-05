@@ -167,12 +167,19 @@ def TransferMods(directory, dest, list, install):
         if filename not in list:
             d1 = os.fsdecode(directory)
             if os.path.exists(directory) and os.path.exists(dest):
-                print(text + filename)
                 name = '\\' + filename
-                shutil.move(r'%s' %d1 +  name, r'%s' %dest)
-                sum = sum + 1
+
+                if os.path.exists(r'%s' %dest +  name):
+                    print(filename + " already exists in the destination folder. The file was deleted instead.")
+                    os.remove(r'%s' %d1 +  name)
+                    #z = input("\n\nPress any key to continue transfering files/mods")
+                else:
+                    print("  " + text + filename)
+                    shutil.move(r'%s' %d1 +  name, r'%s' %dest)
+                    sum = sum + 1
+
             else:
-                e = input("Incorrect or unexisting paths. Please check your paths.")
+                e = input("Incorrect or nonexistent path. Please add your game folder's path in gamepath.txt file.")
                 exit()
 
     if install:
@@ -188,6 +195,8 @@ def TransferMods(directory, dest, list, install):
 
 
 
+
+#------------------------ Main ----------------------
 print(" ")
 print("1) GTA V")
 print("2) Red Dead Redemption 2")

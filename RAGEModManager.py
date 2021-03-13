@@ -154,7 +154,46 @@ GTAIVrgl = ["binkw32.dll",
 "gtaivpath.txt"]
 
 
+#Bool variables to print if there are mods installed/detected or not
+gtav = 0
+rdr2 = 0
+gtaiv = 0
+
+
+
+def CheckForMods(directory, list):
+    directory = os.fsencode(directory)
+    modsCounter = 0
+    if os.path.exists(directory):
+        for file in os.listdir(directory):
+            filename = os.fsdecode(file)
+            if filename not in list:
+                modsCounter = modsCounter + 1
+
+    return modsCounter
+
+
+
+def PrintInstalledMods(directory, list):
+    directory = os.fsencode(directory)
+    if os.path.exists(directory):
+        for file in os.listdir(directory):
+            filename = os.fsdecode(file)
+            if filename not in list:
+                print("\n  " + filename)
+    else:
+        e = input("Incorrect or nonexistent path. Please add your game folder's path in gamepath.txt file.")
+        exit()
+    a = input("\nProcess successfuly completed. Press any key to continue: ")
+
+
+
 def TransferMods(directory, dest, list, install):
+    if not os.path.exists(directory):
+        print("Incorrect or nonexistent path. Check your game paths.\n")
+        e = input("Press any key to exit...")
+        exit()
+
     sum = 0
     if install:
         text = "Installing "
@@ -197,19 +236,29 @@ def TransferMods(directory, dest, list, install):
 
 
 #------------------------ Main ----------------------
+gtav = CheckForMods(pathV, GTAVrgl)
+rdr2 = CheckForMods(pathRDR2, RDR2rgl)
+gtaiv = CheckForMods(pathIV, GTAIVrgl)
+
 print(" ")
-print("1) GTA V")
-print("2) Red Dead Redemption 2")
-print("3) GTA IV")
-print("4) Exit")
+print("----------------------- RAGE Mod Manager -----------------------\n")
+print("  1) GTA V" + " ------------> (" + str(gtav) + " mods installed)\n")
+print("  2) Red Dead Redemption 2" + " ------------> (" + str(rdr2) + " mods installed)\n")
+print("  3) GTA IV" + " ------------> (" + str(gtaiv) + " mods installed)\n")
+print("  4) Exit\n")
+print("----------------------------------------------------------------")
 print(" ")
 choice = int(input("Select a game or Exit: "))
 os.system("cls")
 
 while choice != 4:
     print(" ")
-    print("1) Remove mods from game folder")
-    print("2) Install mods to game folder")
+    print("----------------------- RAGE Mod Manager -----------------------\n")
+    print("  1) Remove mods from game folder\n")
+    print("  2) Install mods to game folder\n")
+    print("  3) Display currently installed mods\n")
+    print("  4) Go back to main menu\n")
+    print("----------------------------------------------------------------")
     print(" ")
     option = int(input("Select an option: "))
     os.system("cls")
@@ -219,6 +268,10 @@ while choice != 4:
             TransferMods(pathV, modsV, GTAVrgl, False)
         elif option == 2:
             TransferMods(modsV, pathV, GTAVrgl, True)
+        elif option == 3:
+            PrintInstalledMods(pathV, GTAVrgl)
+        elif option == 4:
+            print("Going back to main menu...")
         else:
             a = input("Invalid option. Press enter to exit: ")
             exit()
@@ -227,6 +280,10 @@ while choice != 4:
             TransferMods(pathRDR2, modsRDR2, RDR2rgl, False)
         elif option == 2:
             TransferMods(modsRDR2, pathRDR2, RDR2rgl, True)
+        elif option == 3:
+            PrintInstalledMods(pathRDR2, RDR2rgl)
+        elif option == 4:
+            print("Going back to main menu...")
         else:
             a = input("Invalid option. Press enter to exit: ")
             exit()
@@ -235,6 +292,10 @@ while choice != 4:
             TransferMods(pathIV, modsIV, GTAIVrgl, False)
         elif option == 2:
             TransferMods(modsIV, pathIV, GTAIVrgl, True)
+        elif option == 3:
+            PrintInstalledMods(pathIV, GTAIVrgl)
+        elif option == 4:
+            print("Going back to main menu...")
         else:
             a = input("Invalid option. Press enter to exit: ")
             exit()
@@ -244,10 +305,15 @@ while choice != 4:
 
     os.system("cls")
     print(" ")
-    print("1) GTA V")
-    print("2) Red Dead Redemption 2")
-    print("3) GTA IV")
-    print("4) Exit")
+    gtav = CheckForMods(pathV, GTAVrgl)
+    rdr2 = CheckForMods(pathRDR2, RDR2rgl)
+    gtaiv = CheckForMods(pathIV, GTAIVrgl)
+    print("----------------------- RAGE Mod Manager -----------------------\n")
+    print("  1) GTA V" + " ------------> (" + str(gtav) + " mods installed)\n")
+    print("  2) Red Dead Redemption 2" + " ------------> (" + str(rdr2) + " mods installed)\n")
+    print("  3) GTA IV" + " ------------> (" + str(gtaiv) + " mods installed)\n")
+    print("  4) Exit\n")
+    print("----------------------------------------------------------------")
     print(" ")
     choice = int(input("Select a game or Exit: "))
     os.system("cls")

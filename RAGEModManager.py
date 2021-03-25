@@ -154,10 +154,14 @@ GTAIVrgl = ["binkw32.dll",
 "gtaivpath.txt"]
 
 
-#Bool variables to print if there are mods installed/detected or not
+#Int variables to print if there are mods installed/detected or mod in the backup folders
 gtav = 0
 rdr2 = 0
 gtaiv = 0
+#backup files. These are the files located in the backup folders. For example: GTA V Mods
+backup_v = 0
+backup_rdr2 = 0
+backup_iv = 0
 
 
 
@@ -251,14 +255,18 @@ gtav = CheckForMods(pathV, GTAVrgl)
 rdr2 = CheckForMods(pathRDR2, RDR2rgl)
 gtaiv = CheckForMods(pathIV, GTAIVrgl)
 
+backup_v = CheckForMods(modsV, GTAVrgl)
+backup_rdr2 = CheckForMods(modsRDR2, RDR2rgl)
+backup_iv = CheckForMods(modsIV, GTAIVrgl)
+
 print(" ")
-print("----------------------- RAGE Mod Manager -----------------------\n")
-print("          GAME                                MODS INSTALLED    \n")
-print("  1) GTA V" + "                                         " + str(gtav) + "\n")
-print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "\n")
-print("  3) GTA IV" + "                                        " + str(gtaiv) + "\n")
+print("-------------------------------------- RAGE Mod Manager ---------------------------------------\n")
+print("          GAME                                MODS INSTALLED             BACKUP FOLDER         \n")
+print("  1) GTA V" + "                                         " + str(gtav) + "                          " + str(backup_v) + "\n")
+print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "                         " + str(backup_rdr2) + "\n")
+print("  3) GTA IV" + "                                        " + str(gtaiv) + "                         " + str(backup_iv) + "\n")
 print("  4) Exit\n")
-print("----------------------------------------------------------------")
+print("-----------------------------------------------------------------------------------------------")
 print(" ")
 choice = int(input("Select a game or Exit: "))
 os.system("cls")
@@ -320,14 +328,18 @@ while choice != 4:
     gtav = CheckForMods(pathV, GTAVrgl)
     rdr2 = CheckForMods(pathRDR2, RDR2rgl)
     gtaiv = CheckForMods(pathIV, GTAIVrgl)
+
+    backup_v = CheckForMods(modsV, GTAVrgl)
+    backup_rdr2 = CheckForMods(modsRDR2, RDR2rgl)
+    backup_iv = CheckForMods(modsIV, GTAIVrgl)
     print(" ")
-    print("----------------------- RAGE Mod Manager -----------------------\n")
-    print("          GAME                                MODS INSTALLED    \n")
-    print("  1) GTA V" + "                                         " + str(gtav) + "\n")
-    print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "\n")
-    print("  3) GTA IV" + "                                        " + str(gtaiv) + "\n")
+    print("-------------------------------------- RAGE Mod Manager ---------------------------------------\n")
+    print("          GAME                                MODS INSTALLED             BACKUP FOLDER         \n")
+    print("  1) GTA V" + "                                         " + str(gtav) + "                          " + str(backup_v) + "\n")
+    print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "                         " + str(backup_rdr2) + "\n")
+    print("  3) GTA IV" + "                                        " + str(gtaiv) + "                         " + str(backup_iv) + "\n")
     print("  4) Exit\n")
-    print("----------------------------------------------------------------")
+    print("-----------------------------------------------------------------------------------------------")
     print(" ")
     choice = int(input("Select a game or Exit: "))
     os.system("cls")

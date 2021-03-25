@@ -175,6 +175,7 @@ def CheckForMods(directory, list):
 
 
 def PrintInstalledMods(directory, list):
+    print(str(directory))
     directory = os.fsencode(directory)
     if os.path.exists(directory):
         for file in os.listdir(directory):
@@ -188,7 +189,7 @@ def PrintInstalledMods(directory, list):
 
 
 
-def TransferMods(directory, dest, list, install):
+def TransferMods(directory, destination, list, install):
     if not os.path.exists(directory):
         print("Incorrect or nonexistent path. Check your game paths.\n")
         e = input("Press any key to exit...")
@@ -200,21 +201,22 @@ def TransferMods(directory, dest, list, install):
     else:
         text = "Removing "
 
+    print("Transfering files from (" + str(directory) + ") to (" + str(destination) + ")\n")
     directory = os.fsencode(directory)
     for file in os.listdir(directory):
         filename = os.fsdecode(file)
         if filename not in list:
             d1 = os.fsdecode(directory)
-            if os.path.exists(directory) and os.path.exists(dest):
+            if os.path.exists(directory) and os.path.exists(destination):
                 name = '\\' + filename
 
-                if os.path.exists(r'%s' %dest +  name):
+                if os.path.exists(r'%s' %destination +  name):
                     print(filename + " already exists in the destination folder. The file was deleted instead.")
                     os.remove(r'%s' %d1 +  name)
                     #z = input("\n\nPress any key to continue transfering files/mods")
                 else:
                     print("  " + text + filename)
-                    shutil.move(r'%s' %d1 +  name, r'%s' %dest)
+                    shutil.move(r'%s' %d1 +  name, r'%s' %destination)
                     sum = sum + 1
 
             else:
@@ -234,6 +236,15 @@ def TransferMods(directory, dest, list, install):
 
 
 
+def PrintGameHeader(choic):
+    if choic == 1:
+        print("---------------------------- GTA V -----------------------------\n")
+    elif choic == 2:
+        print("--------------------- Red Dead Redemption 2 --------------------\n")
+    elif choic == 3:
+        print("--------------------------- GTA IV -----------------------------\n")
+
+
 
 #------------------------ Main ----------------------
 gtav = CheckForMods(pathV, GTAVrgl)
@@ -242,9 +253,10 @@ gtaiv = CheckForMods(pathIV, GTAIVrgl)
 
 print(" ")
 print("----------------------- RAGE Mod Manager -----------------------\n")
-print("  1) GTA V" + " ------------> (" + str(gtav) + " mods installed)\n")
-print("  2) Red Dead Redemption 2" + " ------------> (" + str(rdr2) + " mods installed)\n")
-print("  3) GTA IV" + " ------------> (" + str(gtaiv) + " mods installed)\n")
+print("          GAME                                MODS INSTALLED    \n")
+print("  1) GTA V" + "                                         " + str(gtav) + "\n")
+print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "\n")
+print("  3) GTA IV" + "                                        " + str(gtaiv) + "\n")
 print("  4) Exit\n")
 print("----------------------------------------------------------------")
 print(" ")
@@ -253,7 +265,7 @@ os.system("cls")
 
 while choice != 4:
     print(" ")
-    print("----------------------- RAGE Mod Manager -----------------------\n")
+    PrintGameHeader(choice)
     print("  1) Remove mods from game folder\n")
     print("  2) Install mods to game folder\n")
     print("  3) Display currently installed mods\n")
@@ -308,10 +320,12 @@ while choice != 4:
     gtav = CheckForMods(pathV, GTAVrgl)
     rdr2 = CheckForMods(pathRDR2, RDR2rgl)
     gtaiv = CheckForMods(pathIV, GTAIVrgl)
+    print(" ")
     print("----------------------- RAGE Mod Manager -----------------------\n")
-    print("  1) GTA V" + " ------------> (" + str(gtav) + " mods installed)\n")
-    print("  2) Red Dead Redemption 2" + " ------------> (" + str(rdr2) + " mods installed)\n")
-    print("  3) GTA IV" + " ------------> (" + str(gtaiv) + " mods installed)\n")
+    print("          GAME                                MODS INSTALLED    \n")
+    print("  1) GTA V" + "                                         " + str(gtav) + "\n")
+    print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "\n")
+    print("  3) GTA IV" + "                                        " + str(gtaiv) + "\n")
     print("  4) Exit\n")
     print("----------------------------------------------------------------")
     print(" ")

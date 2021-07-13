@@ -53,6 +53,7 @@ RDR2rgl = ["12on7",
    "levels_6.rpf",
    "levels_7.rpf",
    "movies_0.rpf",
+   "nvngx_dlss.dll",
    "oo2core_5_win64.dll",
    "packs_0.rpf",
    "packs_1.rpf",
@@ -63,6 +64,10 @@ RDR2rgl = ["12on7",
    "textures_0.rpf",
    "textures_1.rpf",
    "update.rpf",
+   "update_1.rpf",
+   "update_2.rpf",
+   "update_3.rpf",
+   "update_4.rpf",
    "x64",
    "commandline.txt",
 
@@ -263,8 +268,8 @@ print(" ")
 print("-------------------------------------- RAGE Mod Manager ---------------------------------------\n")
 print("          GAME                                MODS INSTALLED             BACKUP FOLDER         \n")
 print("  1) GTA V" + "                                         " + str(gtav) + "                          " + str(backup_v) + "\n")
-print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "                         " + str(backup_rdr2) + "\n")
-print("  3) GTA IV" + "                                        " + str(gtaiv) + "                         " + str(backup_iv) + "\n")
+print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "                          " + str(backup_rdr2) + "\n")
+print("  3) GTA IV" + "                                        " + str(gtaiv) + "                          " + str(backup_iv) + "\n")
 print("  4) Exit\n")
 print("-----------------------------------------------------------------------------------------------")
 print(" ")
@@ -336,8 +341,8 @@ while choice != 4:
     print("-------------------------------------- RAGE Mod Manager ---------------------------------------\n")
     print("          GAME                                MODS INSTALLED             BACKUP FOLDER         \n")
     print("  1) GTA V" + "                                         " + str(gtav) + "                          " + str(backup_v) + "\n")
-    print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "                         " + str(backup_rdr2) + "\n")
-    print("  3) GTA IV" + "                                        " + str(gtaiv) + "                         " + str(backup_iv) + "\n")
+    print("  2) Red Dead Redemption 2" + "                         " + str(rdr2) + "                          " + str(backup_rdr2) + "\n")
+    print("  3) GTA IV" + "                                        " + str(gtaiv) + "                          " + str(backup_iv) + "\n")
     print("  4) Exit\n")
     print("-----------------------------------------------------------------------------------------------")
     print(" ")

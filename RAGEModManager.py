@@ -124,6 +124,7 @@ GTAVrgl = ["bink2w64.dll",
 "x64v.rpf",
 "x64w.rpf",
 "commandline.txt",
+"uninstall.exe",
 
 "installscript.vdf", #Steam files
 "steam_api64.dll",

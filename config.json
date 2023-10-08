@@ -1,0 +1,14 @@
+{
+    "Grand Theft Auto IV": {
+        "game_directory": "",
+        "backup_directory": ".\\GTA IV Mods"
+    },
+    "Grand Theft Auto V": {
+        "game_directory": "",
+        "backup_directory": ".\\GTA V Mods"
+    },
+    "Red Dead Redemption 2": {
+        "game_directory": "",
+        "backup_directory": ".\\RDR2 Mods"
+    }
+}

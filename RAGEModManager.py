@@ -40,7 +40,18 @@ def check_game_directories():
             set_game_dir(game)
 
 
-
+def delete_this(path):
+    try:
+        if os.path.isfile(path):
+            os.remove(path)
+            print(f"File '{path}' was deleted successfully.")
+        elif os.path.isdir(path):
+            shutil.rmtree(path)
+            print(f"Directory '{path}' and its contents were deleted successfully.")
+        else:
+            print(f"'{path}' is neither a file nor a directory.")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
 
 
 class Game:
@@ -82,6 +93,27 @@ class Game:
 	    a = input("\nProcess successfuly completed. Press any key to continue: ")
 
 
+	def delete_mods(self, directory):
+		if not os.path.exists(directory):
+			print("Incorrect or nonexistent path. Check your game paths.\n")
+			e = input("Press any key to exit...")
+			exit()
+
+		direct = os.fsencode(directory)
+		for file in os.listdir(direct):
+			filename = os.fsdecode(file)
+	        
+			if not os.access(directory + "\\" + filename, os.W_OK):
+				print("No access to file", directory + filename)
+				os.system("pause")
+				return
+
+			# If file is a mod
+			if filename not in self.files:
+				print("Deleting " + filename)
+				delete_this(directory + "\\" + filename)
+		print(" ")
+		os.system("pause")
 
 read_game_directories()
 check_game_directories()
@@ -237,6 +269,9 @@ gtav.files = ["GFSDK_ShadowLib.win64.dll",
 #------------------------ Main ----------------------
 current_game = Game("", "")
 
+
+
+
 def transfer_mods(directory, destination, list, install):
     if not os.path.exists(directory):
         print("Incorrect or nonexistent path. Check your game paths.\n")
@@ -338,7 +373,9 @@ def option_menu():
 	print("  2) Install mods to game folder\n")
 	print("  3) Display currently installed mods\n")
 	print("  4) Set game directory location\n")
-	print("  5) Go back to main menu\n")
+	print("  5) Delete installed mods\n")
+	print("  6) Delete mods backup\n")
+	print("  7) Go back to main menu\n")
 	print("----------------------------------------------------------------")
 	print(" ")
 	option = int(input("Select an option: "))
@@ -363,16 +400,26 @@ while choice != 4:
 
     option_menu()
     if option == 1:
+    	# Transfer mods from game directory to backup directory
     	transfer_mods(current_game.path, current_game.backup_dir, current_game.files, False)
     elif option == 2:
+    	# Transfer mods from backup directory to game directory
     	transfer_mods(current_game.backup_dir, current_game.path, current_game.files, True)
     elif option == 3:
+    	# Print installed mods
     	current_game.print_installed_mods()
     elif option == 4:
+    	# Set game path
     	set_game_dir(current_game.conf)
     	read_game_directories()
     	update_directories()
     elif option == 5:
+    	# Delete mods from game directory
+    	current_game.delete_mods(current_game.path)
+    elif option == 6:
+    	# Delete mods from backup directory
+    	current_game.delete_mods(current_game.backup_dir)
+    elif option == 7:
     	print("Going back to main menu...")
     else:
     	a = input("Invalid option. Press enter to exit: ")
